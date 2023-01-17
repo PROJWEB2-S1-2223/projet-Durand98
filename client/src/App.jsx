@@ -3,29 +3,36 @@ import reactLogo from './assets/react.svg';
 import './App.css';
 
 function App() {
-  const [count, setCount] = useState(0);
+  const [count, setCount] = useState('');
+function myFunction(even){
+ setCount(even.select)
+}
+  function Menu(){
+return (
+  <div>
+  <h1>Application de gestion de projets</h1>
+  <h2>Menu</h2>
+  <span  onChange={myFunction}>
+    <li id="select"><input  onVan="Projet"  type= "checkbox"/>Projet</li>
+    <li><input type= "checkbox"/>Equipe</li>
+    <li><input type= "checkbox"/>Fichier</li>
+    </span>
+
+
+  </div>
+);
+  }
+
 
   return (
     <div className="App">
-      <div>
-        <a href="https://vitejs.dev" target="_blank" rel="noreferrer">
-          <img src="/vite.svg" className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://reactjs.org" target="_blank" rel="noreferrer">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button type="button" onClick={() => setCount((countParam) => countParam + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">Click on the Vite and React logos to learn more</p>
-    </div>
+      <Menu/>
+
+      <p>
+      <strong>{count}</strong>
+    </p>
+
+</div>
   );
 }
 
