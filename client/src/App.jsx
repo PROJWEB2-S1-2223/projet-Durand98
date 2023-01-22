@@ -26,12 +26,15 @@ function Titre(){
     return (<ul>
       {
         list.map(function Retour(item){
-          return(<li><input onChange={myFunction}  id="dd" type= "checkbox"/>{item.nom}</li>);
+          return(<li>
+        <input onChange={myFunction} value={item.nom} type= "checkbox"/>
+        {item.nom}
+        </li>);
         })
       }
     </ul>);
   }
-  
+
   return (
     <div className="App">
 <Titre/>
