@@ -8,20 +8,24 @@ function Menu(){
     {nom: "Equipe", prenom: "Equipe",},
     {nom: "Fichier", prenom: "Fichier",},
   ];
+
+
   function myFunction(even){
     setCount(even.target.value);}
   return (<ul>
+    <p><strong>{count} </strong></p>
     {
       list.map(function Retour(item){
         return(
+          <span onClick={myFunction} >
         <li>
-      <input onChange={myFunction} value={item.nom} type= "checkbox"/>
+      <button  value={item.nom} >
       {item.nom}
+      </button>
       </li>
-      );
+      </span>);
       })
     }
-    <p><strong>{count} </strong></p>
   </ul>);
   }
 
