@@ -4,16 +4,15 @@ import './App.css';
 import Menu from './Menu';
 import Titre from './Titre';
 
-
-function App() {
+function App()
+   {
   const [count, setCount] = useState('');
-
-  return (
+  return(
     <div className="App">
       <Titre/>
       <Menu/>
-    </div>
-  );
-}
+</div>
+       );
+    }
 
 export default App;
