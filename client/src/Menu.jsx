@@ -10,7 +10,8 @@ function Menu(){
   ];
 
   function myFunction(even){
-    setCount(even.target.value);}
+    setCount(even.target.value);
+  console.log(even.target.value);}
   return(<ul>
     <p><strong>{count} </strong></p>
     {
