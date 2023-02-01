@@ -12,9 +12,9 @@ function Menu(){
   ];
   const [proj, setProj] = useState([
     {
-      nomProj: '1234',
-      dureeProj: 'George Orwell',
-      nomChef: '1984',
+      nomProj: 'Manger',
+      dureeProj: 'je ne sais pas',
+      nomChef: 'durand',
     },
   ]);
 
