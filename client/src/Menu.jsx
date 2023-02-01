@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import Forme from './Forme';
+import List from './List';
 function Menu(){
   const [count, setCount] = useState('');
   const list=
@@ -8,11 +10,34 @@ function Menu(){
     {nom: "Equipe", prenom: "Equipe",},
     {nom: "Fichier", prenom: "Fichier",},
   ];
+  const [proj, setProj] = useState([
+    {
+      nomProj: '1234',
+      dureeProj: 'George Orwell',
+      nomChef: '1984',
+    },
+  ]);
+
+  function addProj(newProj) {
+    const newProjList = [...proj, newProj];
+    newProjList.sort((porjA, projB) => porjA.author.localeCompare(projB.author));
+    setProj(newProjList);
+  }
+
+  function removeProj(nomProj) {
+    const newProjList = proj.filter((ddd) => ddd.nomProj !== nomProj);
+    setProj(newProjList);
+  }
+
 
   function myFunction(even){
     setCount(even.target.value);
   console.log(even.target.value);}
-  return(<ul>
+
+  return(
+  <ul>
+    <Forme onSubmit={addProj} />
+    <List list={proj} onRemove={removeProj} />
     <p><strong>{count} </strong></p>
     {
       list.map(function Retour(item){
