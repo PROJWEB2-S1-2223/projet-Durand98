@@ -20,7 +20,6 @@ function Menu(){
 
   function addProj(newProj) {
     const newProjList = [...proj, newProj];
-    newProjList.sort((porjA, projB) => porjA.author.localeCompare(projB.author));
     setProj(newProjList);
   }
 
