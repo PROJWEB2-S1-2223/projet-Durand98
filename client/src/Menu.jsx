@@ -28,7 +28,6 @@ function Menu(){
     setProj(newProjList);
   }
 
-
   function myFunction(even){
     setCount(even.target.value);
   console.log(even.target.value);}
@@ -40,7 +39,6 @@ function Menu(){
 
   return(
   <ul>
-
   <li><button onClick={booleanForme}><h3>CREER UN PROJET</h3></button></li>
     {form && (
       <>
@@ -48,9 +46,6 @@ function Menu(){
     <List list={proj} onRemove={removeProj}/>
     </>
     )}
-
-
-
     <p><strong>{count} </strong></p>
     {
       list.map(function Retour(item){
