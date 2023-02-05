@@ -12,9 +12,9 @@ function Menu(){
   ];
   const [proj, setProj] = useState([
     {
-      nomProj: 'Manger',
-      dureeProj: 'je ne sais pas',
-      nomChef: 'durand',
+      nomProj: 'PRODUIT SAP',
+      dureeProj: ' 3 MOIS ',
+      nomChef: ' KEWOU  DURAND ',
     },
   ]);
 
@@ -33,10 +33,24 @@ function Menu(){
     setCount(even.target.value);
   console.log(even.target.value);}
 
+  const [form,setForm]=useState(false);
+  function booleanForme(){
+    setForm(!form);
+  }
+
   return(
   <ul>
-    <Forme onSubmit={addProj} />
-    <List list={proj} onRemove={removeProj} />
+
+  <li><button onClick={booleanForme}><h3>CREER UN PROJET</h3></button></li>
+    {form && (
+      <>
+    <Forme onSubmit={addProj}/>
+    <List list={proj} onRemove={removeProj}/>
+    </>
+    )}
+
+
+
     <p><strong>{count} </strong></p>
     {
       list.map(function Retour(item){
