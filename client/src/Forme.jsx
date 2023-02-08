@@ -39,25 +39,31 @@ function Forme({ onSubmit }) {
   return (
     <form onSubmit={handleFormSubmit}>
       <p>
-        <label>
-        Nom du projet: <input type="text" name="nomProj" value={counts.nomProj} onChange={handleNomProjChange} />
-        </label>
+      <FormInput value={counts.nomProj} onChange={handleNomProjChange}>
+        NOM DU PROJET:{'' }
+        </FormInput>
       </p>
       <p>
-        <label>
-          Duree du projet: <input type="text" name="dureeProj" value={counts.dureeProj} onChange={handleDureeProjChange} />
-        </label>
+      <FormInput value={counts.dureeProj} onChange={handleDureeProjChange}>
+        DUREE DU PROJET:{''}
+        </FormInput>
       </p>
       <p>
-        <label>
-          NOM du Chef de Projet: <input type="text" name="nomChef" value={counts.nomChef} onChange={handleNomChefChange} />
-        </label>
+        <FormInput value={counts.nomChef} onChange={handleNomChefChange}>
+        NOM DU CHEF DE PROJET:{''}
+        </FormInput>
       </p>
       <p>
         <button type="submit">Ajouter Projet</button>
       </p>
     </form>
+
   );
 }
+function FormInput({ value, onChange, children }) {
+  return (
+  <label>{children} <input type="text" value={value} onChange={onChange} />
+  </label>
+  );}
 
 export default Forme;

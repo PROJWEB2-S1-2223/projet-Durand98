@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState ,useEffect} from 'react';
 import Forme from './Forme';
 import List from './List';
 function Menu(){
@@ -10,13 +10,13 @@ function Menu(){
     {nom: "Equipe", prenom: "Equipe",},
     {nom: "Fichier", prenom: "Fichier",},
   ];
-  const [proj, setProj] = useState([
-    {
-      nomProj: 'PRODUIT SAP',
-      dureeProj: ' 3 MOIS ',
-      nomChef: ' KEWOU  DURAND ',
-    },
-  ]);
+  const initialproj = JSON.parse(localStorage.getItem('books'));
+  const [proj, setProj] = useState(initialproj || []);
+
+  useEffect(() => {
+    localStorage.setItem('proj', JSON.stringify(proj));
+  },
+  [proj]);
 
   function addProj(newProj) {
     const newProjList = [...proj, newProj];
