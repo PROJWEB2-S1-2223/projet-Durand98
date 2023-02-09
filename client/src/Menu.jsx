@@ -10,8 +10,8 @@ function Menu(){
     {nom: "Equipe", prenom: "Equipe",},
     {nom: "Fichier", prenom: "Fichier",},
   ];
-  const initialproj = JSON.parse(localStorage.getItem('books'));
-  const [proj, setProj] = useState(initialproj || []);
+  const initialproj = JSON.parse(localStorage.getItem('proj'));
+  const [proj, setProj] = useState(initialproj || [] );
 
   useEffect(() => {
     localStorage.setItem('proj', JSON.stringify(proj));
