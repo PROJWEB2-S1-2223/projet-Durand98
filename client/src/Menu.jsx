@@ -9,10 +9,10 @@ function Menu(){
     {nom: "Fichier", prenom: "Fichier",},
   ];
 
-
   function myFunction(even){
-    setCount(even.target.value);}
-  return (<ul>
+    setCount(even.target.value);
+  console.log(even.target.value);}
+  return(<ul>
     <p><strong>{count} </strong></p>
     {
       list.map(function Retour(item){
