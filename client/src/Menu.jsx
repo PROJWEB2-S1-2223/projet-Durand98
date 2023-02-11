@@ -1,6 +1,10 @@
 import React, { useState ,useEffect} from 'react';
 import Forme from './Forme';
 import List from './List';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import Container from 'react-bootstrap/Container';
+import Nav from 'react-bootstrap/Nav';
+import Navbar from 'react-bootstrap/Navbar';
 function Menu(){
   const [count, setCount] = useState('');
   const list=
@@ -47,6 +51,14 @@ function Menu(){
     </>
     )}
     <p><strong>{count} </strong></p>
+    <>
+    <Navbar bg="light" expand="lg">
+      <Container>
+        <Navbar.Brand></Navbar.Brand>
+        <Navbar.Toggle aria-controls="basic-navbar-nav" />
+        <Navbar.Collapse id="basic-navbar-nav">
+           <Nav className="me-auto">
+
     {
       list.map(function Retour(item){
         return(
@@ -59,6 +71,12 @@ function Menu(){
       </span>);
       })
     }
+
+     </Nav>
+     </Navbar.Collapse>
+     </Container>
+     </Navbar>
+    </>
   </ul>);
   }
 
