@@ -64,14 +64,13 @@ function Menu(){
         return(
           <span onClick={myFunction} >
         <li>
-      <button  value={item.nom} >
+      <button  value={item.nom} variant="success" >
       {item.nom}
       </button>
       </li>
       </span>);
       })
     }
-
      </Nav>
      </Navbar.Collapse>
      </Container>
