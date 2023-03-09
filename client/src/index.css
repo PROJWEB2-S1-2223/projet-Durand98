@@ -30,17 +30,14 @@ body {
   place-items: center;
   min-width: 320px;
   min-height: 100vh;
-  //background: linear-gradient(to right, #ff0000, #ff7f00, #ffff00, #00ff00, #0000ff, #4b0082, #8f00ff);
-  //background-image: radial-gradient(circle, red, orange, yellow, green, blue, indigo, violet);
-  background-image: linear-gradient(to bottom right, red, orange, yellow, green, blue, indigo, violet);
-  //background-image: linear-gradient(to right, red, orange, yellow, green, blue, indigo, violet);
-  //background: linear-gradient(to bottom, #ff0000, #ff7f00, #ffff00, #00ff00, #0000ff, #4b0082, #8f00ff);
-
-
-
-
+  background-image:url(https://cdn.prod.www.spiegel.de/images/c75dd789-0001-0004-0000-000000183245_w1600_r1.4982896237172179_fpx41.37_fpy50.jpg);
+  background-repeat:round;
 
 }
+
+
+
+
 
 h1 {
   font-size: 3.2em;
