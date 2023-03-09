@@ -11,17 +11,8 @@ function Menu(){
   const [active, setActive] = useState('Projets');
   const list=["Projet","Agenda","Equipe","Fichier",];
 
-
-  function myFunction(even){
-    setCount(even.target.value);
-  console.log(even.target.value);}
-
-
-
   return(
   <ul>
-
-    <p><strong>{count} </strong></p>
     <>
     <Navbar bg="light" expand="lg">
       <Container>
@@ -34,10 +25,6 @@ function Menu(){
       list.map(function Retour(item){
         return(
           <MenuItem key={item} title={item} onClick={setActive} />
-
-
-
-
          );
       })
     }
