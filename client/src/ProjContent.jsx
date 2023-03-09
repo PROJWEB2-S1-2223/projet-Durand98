@@ -1,7 +1,5 @@
 import React, { useState,useEffect } from 'react';
-import Menu from './Menu';
 import Forme from './Forme';
-import Titre from './Titre';
 import List from './List';
 
 function Projcontent(){
