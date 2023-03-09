@@ -27,7 +27,7 @@ function FormeFich({ onSubmit }) {
     const newNomMembre = event.target.value;
     setCounts({
       ...counts,
-      nomMenbre: newNomMembre,
+      nomMembre: newNomMembre,
     });
   }
 
