@@ -7,6 +7,7 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import Menu from './Menu';
 import Titre from './Titre';
+import ProjContent from './ProjContent';
 
 
 function App()
@@ -16,6 +17,7 @@ function App()
     <div className="App">
       <Titre/>
       <Menu/>
+      
 </div>
        );
     }

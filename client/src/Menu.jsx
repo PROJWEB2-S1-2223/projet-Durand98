@@ -1,55 +1,26 @@
 import React, { useState ,useEffect} from 'react';
 import Forme from './Forme';
 import List from './List';
+import ProjContent from './ProjContent';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 function Menu(){
   const [count, setCount] = useState('');
-  const list=
-  [
-    {nom: "Projet",prenom: "Projet",},
-    {nom: "Agenda", prenom: "Angenda",},
-    {nom: "Equipe", prenom: "Equipe",},
-    {nom: "Fichier", prenom: "Fichier",},
-  ];
-  const initialproj = JSON.parse(localStorage.getItem('proj'));
-  const [proj, setProj] = useState(initialproj || [] );
+  const [active, setActive] = useState('Projets');
+  const list=["Projet","Agenda","Equipe","Fichier",];
 
-  useEffect(() => {
-    localStorage.setItem('proj', JSON.stringify(proj));
-  },
-  [proj]);
-
-  function addProj(newProj) {
-    const newProjList = [...proj, newProj];
-    setProj(newProjList);
-  }
-
-  function removeProj(nomProj) {
-    const newProjList = proj.filter((ddd) => ddd.nomProj !== nomProj);
-    setProj(newProjList);
-  }
 
   function myFunction(even){
     setCount(even.target.value);
   console.log(even.target.value);}
 
-  const [form,setForm]=useState(false);
-  function booleanForme(){
-    setForm(!form);
-  }
+
 
   return(
   <ul>
-  <li><button onClick={booleanForme}><h3>CREER UN PROJET</h3></button></li>
-    {form && (
-      <>
-    <Forme onSubmit={addProj}/>
-    <List list={proj} onRemove={removeProj}/>
-    </>
-    )}
+
     <p><strong>{count} </strong></p>
     <>
     <Navbar bg="light" expand="lg">
@@ -62,21 +33,34 @@ function Menu(){
     {
       list.map(function Retour(item){
         return(
-          <span onClick={myFunction} >
-        <li>
-      <button  value={item.nom} variant="success" >
-      {item.nom}
-      </button>
-      </li>
-      </span>);
+          <MenuItem key={item} title={item} onClick={setActive} />
+
+
+
+
+         );
       })
     }
      </Nav>
      </Navbar.Collapse>
      </Container>
      </Navbar>
+     {active === 'Projet' && <ProjContent/>}
+     {active === 'Agenda' && <h2>Agenda</h2>}
+     {active === 'Equipe' && <h2>Equipe</h2>}
+     {active === 'Fichier' && <h2>Fichier</h2>}
     </>
   </ul>);
+
+function MenuItem({ title, onClick })
+{
+   return (
+<li>
+  <button type="button" onClick={() => onClick(title)}>
+    {title}
+    </button>
+    </li>
+    );}
   }
 
 export default Menu;
