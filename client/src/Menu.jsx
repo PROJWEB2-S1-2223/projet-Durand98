@@ -1,6 +1,7 @@
 import React, { useState ,useEffect} from 'react';
 import FichContent from './FichContent';
 import ProjContent from './ProjContent';
+import EquipeContent from './EquipeContent';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
@@ -33,7 +34,7 @@ function Menu(){
      </Navbar>
      {active === 'Projet' && <ProjContent/>}
      {active === 'Agenda' && <h2>Agenda</h2>}
-     {active === 'Equipe' && <h2>Equipe</h2>}
+     {active === 'Equipe' && <EquipeContent/>}
      {active === 'Fichier' && <FichContent/>}
     </>
   </ul>);
