@@ -4,7 +4,7 @@ import ListEquipe from './ListEquipe';
 
 function EquipeContent(){
 
-  const initialproj = JSON.parse(localStorage.getItem('fich'));
+  const initialproj = JSON.parse(localStorage.getItem('equi'));
   const [equi, setEqui] = useState(initialproj || [] );
 
   useEffect(() =>
@@ -21,14 +21,14 @@ function EquipeContent(){
 
   function removeEquip(nomEqui)
       {
-    const newEquiList = fich.filter((ddd) => ddd.nomFich !== nomEqui);
+    const newEquiList = fich.filter((ddd) => ddd.nomEqui !== nomEqui);
     setFich(newEquiList);
       }
   return(
     <>
-    <h3>NOUVEAU FICHIER </h3>
-    <FormFich onSubmit={addEqui}/>
-    <h2>Mes Fichier </h2>
+    <h3>NOUVELLE EQUIPE </h3>
+    <FormEquipe onSubmit={addEqui}/>
+    <h2>Mes Equipes </h2>
     <ListEquipe list={equi} onRemove={removeEquip}/>
     </>
        )

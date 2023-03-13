@@ -5,7 +5,7 @@ function ListEquipe({ list, onRemove }) {
       {list.map((item) => (
         <li key={item.idProj}>
           <span>{item.idProj}</span>
-          <span>{item.idProj}</span>
+          <span>{item.numEqu}</span>
           <span>{item.nomMembre}</span>
 
           <button type="button" onClick={() => onRemove(item.nomProj)}>
