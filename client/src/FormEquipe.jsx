@@ -1,16 +1,16 @@
 import React, { useState } from 'react'
-function FormeFich({ onSubmit }) {
+function FormEquipe({ onSubmit }) {
   const [counts, setCounts] = useState({
-    intitul: '',
+    numEqu: '',
     idProj: '',
     nomMembre: '',
   });
 
-  function handleIntitulChange(event) {
-    const newIntitul = event.target.value;
+  function handleNumEquChange(event) {
+    const newNumEqu = event.target.value;
     setCounts({
       ...counts,
-      intitul: newIntitul,
+      intitul: newNumEqu,
     });
   }
 
@@ -38,13 +38,13 @@ function FormeFich({ onSubmit }) {
   return (
     <form onSubmit={handleFormSubmit}>
       <p>
-      <FormInput value={counts.intitul} onChange={handleIntitulChange}>
-        Partie du Projet Intitule:{'' }
+      <FormInput value={counts.numEqu} onChange={handleNumEquChange}>
+        Equipe Numero :{ '' }
         </FormInput>
       </p>
       <p>
       <FormInput value={counts.idProj} onChange={handleIdProjChange}>
-        ID Du Projet /NU-Projet:{''}
+        Nom du projet :{''}
         </FormInput>
       </p>
       <p>
@@ -53,7 +53,27 @@ function FormeFich({ onSubmit }) {
         </FormInput>
       </p>
       <p>
-        <button type="submit">Ajouter Fichier</button>
+        <FormInput value={counts.nomMembre} onChange={handleNomMembreChange}>
+        NOM DU Membre :{''}
+        </FormInput>
+      </p>
+      <p>
+        <FormInput value={counts.nomMembre} onChange={handleNomMembreChange}>
+        NOM DU Membre :{''}
+        </FormInput>
+      </p>
+      <p>
+        <FormInput value={counts.nomMembre} onChange={handleNomMembreChange}>
+        NOM DU Membre :{''}
+        </FormInput>
+      </p>
+      <p>
+        <FormInput value={counts.nomMembre} onChange={handleNomMembreChange}>
+        NOM DU Membre :{''}
+        </FormInput>
+      </p>
+      <p>
+        <button type="submit">Ajouter Equipe</button>
       </p>
     </form>
 
@@ -65,4 +85,4 @@ function FormInput({ value, onChange, children }) {
   </label>
   );}
 
-export default FormeFich;
+export default FormEquipe;
