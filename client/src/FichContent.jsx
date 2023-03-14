@@ -8,16 +8,16 @@ function Fichcontent(){
   const [fich, setFich] = useState(initialproj || [] );
 
   useEffect(() =>
-  {
+ {
     localStorage.setItem('fich', JSON.stringify(fich));
   },
-  [fich]);
+   [fich]);
 
   function addFich(newFich)
 {
     const newFichList = [...fich, newFich];
     setFich(newFichList);
-      }
+  }
 
   function removeFich(nomFich)
       {
