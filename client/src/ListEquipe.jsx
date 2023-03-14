@@ -8,8 +8,8 @@ function ListEquipe({ list, onRemove }) {
           <span>{item.numEqu}</span>
           <span>{item.nomMembre}</span>
 
-          <button type="button" onClick={() => onRemove(item.nomProj)}>
-          <h4>SUPPRIMER  Equipe</h4>
+          <button type="button" onClick={() => onRemove(item.idProj)}>
+            <h4>SUPPRIMER Equipe</h4>
           </button>
         </li>
       ))}

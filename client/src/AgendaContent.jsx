@@ -1,5 +1,5 @@
-import React, { useState,useEffect } from 'react';
-import FormAngenda from './FormAngenda;
+import React, { useState, useEffect } from 'react';
+import FormAngenda from './FormAngenda';
 import ListAngenda from './ListAngenda';
 
 function AgendaContent() {
@@ -7,16 +7,16 @@ function AgendaContent() {
   const [ag, setAg] = useState(initialproj || []);
 
   useEffect(() => {
-    localStorage.setItem('proj', JSON.stringify(ag));
+    localStorage.setItem('ag', JSON.stringify(ag));
   }, [ag]);
 
   function addAgen(newAg) {
     const newProjList = [...ag, newAg];
-    setProj(newProjList);
+    setAg(newProjList);
   }
 
   function removeAgen(nomProj) {
-    const newProjList = proj.filter((ddd) => ddd.nomProj !== nomProj);
+    const newProjList = ag.filter((ddd) => ddd.nomProj !== nomProj);
     setAg(newProjList);
   }
   return (
@@ -24,7 +24,7 @@ function AgendaContent() {
       <h3>Nouvel Agenda</h3>
       <FormAngenda onSubmit={addAgen} />
       <h2>Mon Agenda </h2>
-      <ListAngenda list={proj} onRemove={removeAgen} />
+      <ListAngenda list={ag} onRemove={removeAgen} />
     </>
   );
 }
