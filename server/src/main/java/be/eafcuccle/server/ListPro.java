@@ -1,4 +1,3 @@
-
 import java.util.Collection;
 import org.springframework.stereotype.Component;
 import java.util.ArrayList;
@@ -12,7 +11,7 @@ public class ListPro {
   }
 
   public Collection<Projet> getProjets() {
-    return projets.getProjets;
+    return projets;
   }
 
 }
