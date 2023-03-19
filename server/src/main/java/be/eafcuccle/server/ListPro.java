@@ -12,7 +12,7 @@ public class ListPro {
   }
 
   public Collection<Projet> getProjets() {
-    return projets;
+    return projets.getProjets;
   }
 
 }
