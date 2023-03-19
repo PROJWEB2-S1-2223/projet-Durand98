@@ -12,10 +12,10 @@ import org.springframework.web.bind.annotation.RestController;
 // @RequestMapping("/api")
 public class ApiController {
   @Autowired
-  private List list;
+  private ListPro listPro;
 
   @GetMapping("/api/projets")
   public Collection<Projet> getMesProjets() {
-    return list.getMesProjets;
+    return listPro.getMesProjets;
   }
 }

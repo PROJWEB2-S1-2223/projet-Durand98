@@ -1,24 +1,19 @@
-package be.eafcuccle.server;
-
-public class Projets {
+public class Projet {
   private String nameProj;
   private String nameChef;
   private String duree;
 
-public Projet(String nameProj,String namChef,String duree){
-this.nameProj=nameProj;
-this.namChef=namChef;
-this.dureee=duree;
-}
-
-  protected void Projet() {
+  public Projet(String nameProj, String nameChef, String duree) {
+    this.nameProj = nameProj;
+    this.nameChef = nameChef;
+    this.duree = duree;
   }
 
   public String getNameProj() {
     return nameProj;
   }
 
-  public String getNamChef() {
+  public String getNameChef() {
     return nameChef;
   }
 
