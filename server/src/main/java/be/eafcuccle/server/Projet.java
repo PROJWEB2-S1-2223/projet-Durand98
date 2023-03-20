@@ -1,6 +1,9 @@
 package be.eafcuccle.server;
 
+import java.util.UUID;
+
 public class Projet {
+  private UUID id;
   private String nameProj;
   private String nameChef;
   private String duree;
@@ -21,5 +24,13 @@ public class Projet {
 
   public String getDuree() {
     return duree;
+  }
+
+  public UUID getId() {
+    return id;
+  }
+
+  public void setId(UUID id) {
+    this.id = id;
   }
 }
