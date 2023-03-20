@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.util.UriComponents;
+import org.springframework.web.util.UriComponentsBuilder;
 import org.springframework.web.bind.annotation.RequestBody;
 
 @RestController
@@ -36,8 +38,9 @@ public class ApiController {
   }
 
   @PostMapping("/projets")
-  public ResponseEntity addProjet(@RequestBody Projet projet) {
+  public ResponseEntity addProjet(@RequestBody Projet projet, UriComponentsBuilder builder) {
     listPro.addProjet(projet);
+    UriComponents linkToNewProjet=builder.path("/api/projets/{id}").buildAndExpand(projet.getId());
     return ResponseEntity.created(null).build();
   }
 
