@@ -2,6 +2,7 @@ package be.eafcuccle.server;
 
 import java.util.Collection;
 import java.util.UUID;
+import java.lang.Thread;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -40,8 +41,8 @@ public class ApiController {
   @PostMapping("/projets")
   public ResponseEntity addProjet(@RequestBody Projet projet, UriComponentsBuilder builder) {
     listPro.addProjet(projet);
-    UriComponents linkToNewProjet=builder.path("/api/projets/{id}").buildAndExpand(projet.getId());
-    return ResponseEntity.created(null).build();
+    UriComponents linkToNewProjet = builder.path("/api/projets/{id}").buildAndExpand(projet.getId());
+    return ResponseEntity.created(linkToNewProjet.toUri()).build();
   }
 
 }
