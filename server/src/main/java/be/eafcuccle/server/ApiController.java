@@ -26,8 +26,13 @@ public class ApiController {
 
   @GetMapping("/projets/{id}")
 
-  public Projet finProjetById(@PathVariable UUID id) {
-    return listPro.finProjetById(id);
+  public ResponseEntity<Projet> finProjetById(@PathVariable UUID id) {
+    Projet projet = listPro.finProjetById(id);
+    if (projet != null) {
+      return ResponseEntity.ok(projet);
+    } else {
+      return ResponseEntity.notFound().build();
+    }
   }
 
   @PostMapping("/projets")
