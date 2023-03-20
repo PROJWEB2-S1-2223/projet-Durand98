@@ -1,3 +1,5 @@
+package be.eafcuccle.server;
+
 import java.util.Collection;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,7 +16,8 @@ public class ApiController {
   private ListPro listPro;
 
   @GetMapping("/projets")
-  public Collection<Projet> getMesProjets() {
+  public Collection<Projet> getProjets() {
+    System.out.println("test");
     return listPro.getProjets();
   }
 }

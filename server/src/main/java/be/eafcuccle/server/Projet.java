@@ -1,3 +1,5 @@
+package be.eafcuccle.server;
+
 public class Projet {
   private String nameProj;
   private String nameChef;

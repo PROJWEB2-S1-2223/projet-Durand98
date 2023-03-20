@@ -1,3 +1,5 @@
+package be.eafcuccle.server;
+
 import java.util.Collection;
 import org.springframework.stereotype.Component;
 import java.util.ArrayList;
