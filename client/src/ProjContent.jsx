@@ -1,38 +1,75 @@
-import React, { useState,useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
+import { Alert, Spinner, Stack } from 'react-bootstrap';
 import Menu from './Menu';
 import Forme from './Forme';
 import Titre from './Titre';
 import List from './List';
+import userSWR from 'swr';
+const fetcher = (...args) => fetch(...args).then((res) => res.json());
 
-function Projcontent(){
-
+function Projcontent() {
   const initialproj = JSON.parse(localStorage.getItem('proj'));
-  const [proj, setProj] = useState(initialproj || [] );
+  const [proj, setProj] = useState(initialproj || []);
 
-  useEffect(() =>
-  {
-    localStorage.setItem('proj', JSON.stringify(proj));
-  },
-  [proj]);
+  // useEffect(() =>
+  // {
+  //   localStorage.setItem('proj', JSON.stringify(proj));
+  // },
+  // [proj]);
 
-  function addProj(newProj)
-    {
+  function addProj(newProj) {
     const newProjList = [...proj, newProj];
     setProj(newProjList);
-      }
+  }
 
-  function removeProj(nomProj)
-      {
+  function removeProj(nomProj) {
     const newProjList = proj.filter((ddd) => ddd.nomProj !== nomProj);
     setProj(newProjList);
-      }
-  return(
+  }
+  return (
     <>
-    <h3>CREER UN PROJET</h3>
-    <Forme onSubmit={addProj}/>
-    <h2>Mes Projets </h2>
-    <List list={proj} onRemove={removeProj}/>
+      <h3>CREER UN PROJET</h3>
+      <Forme onSubmit={addProj} />
+      <Stack>
+        <h2>Mes Projets </h2>
+        <ProjTable />
+        <List list={proj} onRemove={removeProj} />
+      </Stack>
     </>
-       )
+  );
 }
+
+function ProjTable() {
+  const { data, error, isLoading } = userSWR('/api/projets', fetcher);
+  if (isLoading) {
+    return <Spinner />;
+  }
+  if (error) {
+    return <Alert variant="danger">Une erreur s&apos;est produite</Alert>;
+  }
+  if (data) {
+    return (
+      <table>
+        <thead>
+          <tr>
+            <th>NOM PROJET</th>
+            <th>DUREE</th>
+            <th>CHEF PROJET</th>
+          </tr>
+        </thead>
+        <tbody>
+          {data.map((projet) => (
+            <tr>
+              <td>{projet.nameProj}</td>
+              <td>{projet.duree}</td>
+              <td>{projet.nameChef}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    );
+    //<span>{JSON.stringify(data)}</span>;
+  }
+}
+
 export default Projcontent;

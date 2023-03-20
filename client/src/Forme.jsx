@@ -36,36 +36,44 @@ function Forme({ onSubmit }) {
   function handleFormSubmit(event) {
     event.preventDefault();
     onSubmit(counts);
+    fetch('/api/projets', {
+      method: 'POST',
+      headers: {
+        'Content-type': 'application/json',
+      },
+      body: JSON.stringify(counts),
+    });
   }
 
   return (
     <form onSubmit={handleFormSubmit}>
       <p>
-      <FormInput value={counts.nomProj} onChange={handleNomProjChange}>
-        NOM DU PROJET:{'' }
+        <FormInput value={counts.nomProj} onChange={handleNomProjChange}>
+          NOM DU PROJET:{''}
         </FormInput>
       </p>
       <p>
-      <FormInput value={counts.dureeProj} onChange={handleDureeProjChange}>
-        DUREE DU PROJET:{''}
+        <FormInput value={counts.dureeProj} onChange={handleDureeProjChange}>
+          DUREE DU PROJET:{''}
         </FormInput>
       </p>
       <p>
         <FormInput value={counts.nomChef} onChange={handleNomChefChange}>
-        NOM DU CHEF DE PROJET:{''}
+          NOM DU CHEF DE PROJET:{''}
         </FormInput>
       </p>
       <p>
         <button type="submit">Ajouter Projet</button>
       </p>
     </form>
-
   );
 }
 function FormInput({ value, onChange, children }) {
   return (
-  <label>{children} <input type="text" value={value} onChange={onChange} />
-  </label>
-  );}
+    <label>
+      {children} <input type="text" value={value} onChange={onChange} />
+    </label>
+  );
+}
 
 export default Forme;

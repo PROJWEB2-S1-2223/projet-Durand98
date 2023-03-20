@@ -42,6 +42,7 @@ public class ApiController {
   public ResponseEntity addProjet(@RequestBody Projet projet, UriComponentsBuilder builder) {
     listPro.addProjet(projet);
     UriComponents linkToNewProjet = builder.path("/api/projets/{id}").buildAndExpand(projet.getId());
+  
     return ResponseEntity.created(linkToNewProjet.toUri()).build();
   }
 
