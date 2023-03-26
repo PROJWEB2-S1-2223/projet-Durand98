@@ -5,10 +5,12 @@ function List({ list, onRemove }) {
       {list.map((item) => (
         <li key={item.nomProj}>
           <span>{item.nomProj}</span>
-          <span>{item.dureeProj}</span> <span>{item.nomChef}</span>
+          <span>{item.dateDebut}</span>
+          <span>{item.dateFin}</span>
+          <span>{item.nomChef}</span>
 
           <button type="button" onClick={() => onRemove(item.nomProj)}>
-          <h4>SUPPRIMER  De L'agenda </h4>
+            <h4>SUPPRIMER De L'agenda </h4>
           </button>
         </li>
       ))}

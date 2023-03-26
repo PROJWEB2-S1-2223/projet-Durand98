@@ -10,7 +10,7 @@ public class ListPro {
   private Collection<Projet> projets = new ArrayList<>();
 
   ListPro() {
-    addProjet(new Projet("Fabrique de jeux ", "Kewou Durand ", "3 mois"));
+    addProjet(new Projet("Fabrique de jeux ", "2007-07-04","2023-09-09","Kewou Durand "));
   }
 
   public Collection<Projet> getProjets() {

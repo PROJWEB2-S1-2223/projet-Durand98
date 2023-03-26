@@ -8,14 +8,14 @@ import userSWR from 'swr';
 const fetcher = (...args) => fetch(...args).then((res) => res.json());
 
 function Projcontent() {
-  const initialproj = JSON.parse(localStorage.getItem('proj'));
+ const initialproj = JSON.parse(localStorage.getItem('proj'));
   const [proj, setProj] = useState(initialproj || []);
 
   // useEffect(() =>
   // {
   //   localStorage.setItem('proj', JSON.stringify(proj));
   // },
-  // [proj]);
+  //[proj]);
 
   function addProj(newProj) {
     const newProjList = [...proj, newProj];
@@ -53,16 +53,18 @@ function ProjTable() {
         <thead>
           <tr>
             <th>NOM PROJET</th>
-            <th>DUREE</th>
+            <th>DATE DE DEBUT</th>
+            <th>DATE DE FIN</th>
             <th>CHEF PROJET</th>
           </tr>
         </thead>
         <tbody>
           {data.map((projet) => (
             <tr>
-              <td>{projet.nameProj}</td>
-              <td>{projet.duree}</td>
-              <td>{projet.nameChef}</td>
+              <td>{projet.nomProj}</td>
+              <td>{projet.DateDebut}</td>
+              <td>{projet.DateFin}</td>
+              <td>{projet.nomChef}</td>
             </tr>
           ))}
         </tbody>
