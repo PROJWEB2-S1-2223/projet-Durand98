@@ -53,8 +53,7 @@ function ProjTable() {
         <thead>
           <tr>
             <th>NOM PROJET</th>
-            <th>DATE DE DEBUT</th>
-            <th>DATE DE FIN</th>
+
             <th>CHEF PROJET</th>
           </tr>
         </thead>
@@ -62,8 +61,6 @@ function ProjTable() {
           {data.map((projet) => (
             <tr>
               <td>{projet.nomProj}</td>
-              <td>{projet.DateDebut}</td>
-              <td>{projet.DateFin}</td>
               <td>{projet.nomChef}</td>
             </tr>
           ))}

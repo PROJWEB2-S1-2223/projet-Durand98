@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 public class ApiController {
   @Autowired
   private ListPro listPro;
+  private ListPersonne listPer;
 
   @GetMapping("/projets")
   public Collection<Projet> getProjets() {
@@ -42,7 +43,7 @@ public class ApiController {
   public ResponseEntity addProjet(@RequestBody Projet projet, UriComponentsBuilder builder) {
     listPro.addProjet(projet);
     UriComponents linkToNewProjet = builder.path("/api/projets/{id}").buildAndExpand(projet.getId());
-  
+
     return ResponseEntity.created(linkToNewProjet.toUri()).build();
   }
 

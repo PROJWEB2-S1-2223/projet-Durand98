@@ -91,7 +91,6 @@ function Forme({ onSubmit }) {
           DATE DE DEBUT PROJ :{''}
         </FormInput>
       </p>
-
       <p>
         <FormInput value={counts.dateFin} onChange={handleDateFinChange} type="date">
           DATE DE FIN PROJ :{''}
@@ -102,6 +101,7 @@ function Forme({ onSubmit }) {
           NOM DU CHEF DE PROJET:{''}
         </FormInputText>
       </p>
+
       <p>
         <button type="submit" disabled={formDisabled}>
           Ajouter Projet

@@ -12,11 +12,13 @@ public class Projet {
   private String dateDebut;
   private String dateFin;
 
+
   public Projet(String nomProj, String dateDebut, String dateFin, String nomChef) {
     this.nomProj = nomProj;
     this.dateDebut = dateDebut;
     this.dateFin = dateFin;
     this.nomChef = nomChef;
+
   }
 
   public String getNomProj() {
@@ -26,6 +28,8 @@ public class Projet {
   public String getNomChef() {
     return nomChef;
   }
+
+
 
   public String getDateFin() {
     return dateFin;

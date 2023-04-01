@@ -1,108 +1,119 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable prettier/prettier */
 import React, { useState } from 'react';
-function FormEquipe({ onSubmit }) {
+import useSWR from 'swr';
+
+import { Alert, Spinner, Stack } from 'react-bootstrap';
+
+function FormeEquipe({ onSubmit }) {
+  const fetcher = (...args) => fetch(...args).then((res) => res.json());
   const [counts, setCounts] = useState({
-    numEqu: '',
-    idProj: '',
     nomMembre: '',
-    nomMembre2: '',
-    nomMembre3: '',
-    nomMembre4: '',
   });
+  const [selectedProj, setSelectedProj] = useState('');
+  const [selecteMem, setSelecteMen] = useState('');
 
-  function handleNumEquChange(event) {
-    const newNumEqu = event.target.value;
-    setCounts({
-      ...counts,
-      numEqu: newNumEqu,
-    });
-  }
-
-  function handleIdProjChange(event) {
-    const newIdProj = event.target.value;
-    setCounts({
-      ...counts,
-      idProj: newIdProj,
-    });
-  }
+  const [validated, setValidated] = useState(false);
+  const [showNotif, setShowNotif] = useState(false);
+  const [formDisabled, setFormDisabled] = useState(false);
 
   function handleNomMembreChange(event) {
-    const newNomMembre = event.target.value;
-    setCounts({
-      ...counts,
-      nomMembre: newNomMembre,
-    });
-  }
-  function handleNomMembre2Change(event) {
-    const newNomMembre = event.target.value;
-    setCounts({
-      ...counts,
-      nomMembre2: newNomMembre,
-    });
-  }
-  function handleNomMembre3Change(event) {
-    const newNomMembre = event.target.value;
-    setCounts({
-      ...counts,
-      nomMembre3: newNomMembre,
-    });
-  }
-  function handleNomMembre4Change(event) {
-    const newNomMembre = event.target.value;
-    setCounts({
-      ...counts,
-      nomMembre4: newNomMembre,
-    });
+    const newNomChef = event.target.value;
+    setCounts((prevCounts) => ({
+      ...prevCounts,
+      nomMembre: newNomChef,
+    }));
   }
 
   function handleFormSubmit(event) {
     event.preventDefault();
-    onSubmit(counts);
+    const form = event.target;
+    if (form.checkValidity() === true) {
+      setFormDisabled(true);
+      setShowNotif(false);
+      setValidated(true);
+
+      fetch('/api/personnes', {
+        method: 'POST',
+        headers: {
+          'Content-type': 'application/json',
+        },
+        body: JSON.stringify(counts),
+      })
+        .then(() => {
+          setCounts({
+            nomMembre: '',
+          });
+          setFormDisabled(false);
+          setShowNotif(true);
+          setValidated(false);
+          console.log('reussi');
+        })
+        .catch((err) => console.error(err));
+    } else {
+      setValidated(true);
+    }
+  }
+
+  function handleProjChange(event) {
+    setSelectedProj(event.target.value);
+  }
+
+  function handleMenChange(event) {
+    setSelecteMen(event.target.value);
+  }
+
+  function ProjOptions() {
+    const { data, error } = useSWR('/api/projets', fetcher);
+
+    if (error) {
+      return <option value="">Une erreur s'est produite lors du chargement des projets</option>;
+    }
+
+    if (!data) {
+      return <option value="">Chargement des projets...</option>;
+    }
+
+    return (
+      <>
+        <option value="">--Choisir un projet--</option>
+        {data.map((projet) => (
+          <option key={projet.id} value={projet.id}>
+            {projet.nomProj}
+          </option>
+        ))}
+      </>
+    );
   }
 
   return (
-    <form onSubmit={handleFormSubmit}>
+    <form onSubmit={handleFormSubmit} noValidate>
+      <label htmlFor="projSelect">Choisir un projet:</label>
+      <select id="projSelect" value={selectedProj} onChange={handleProjChange}>
+        <ProjOptions />
+      </select>{' '}
+      /{' '}
       <p>
-        <FormInput value={counts.numEqu} onChange={handleNumEquChange}>
-          Equipe Numero :{''}
-        </FormInput>
+        <FormInputText value={counts.nomMembre} onChange={handleNomMembreChange}>
+          NOM DU MEMBRE:{''}
+        </FormInputText>
       </p>
       <p>
-        <FormInput value={counts.idProj} onChange={handleIdProjChange}>
-          Nom du projet :{''}
-        </FormInput>
+        <button type="submit" disabled={formDisabled}>
+          Ajoute
+        </button>
       </p>
-      <p>
-        <FormInput value={counts.nomMembre} onChange={handleNomMembreChange}>
-          NOM DU Membre 1 :{''}
-        </FormInput>
-      </p>
-      <p>
-        <FormInput value={counts.nomMembre2} onChange={handleNomMembre2Change}>
-          NOM DU Membre 2 :{''}
-        </FormInput>
-      </p>
-      <p>
-        <FormInput value={counts.nomMembre3} onChange={handleNomMembre3Change}>
-          NOM DU Membre 3 :{''}
-        </FormInput>
-      </p>
-      <p>
-        <FormInput value={counts.nomMembre4} onChange={handleNomMembre4Change}>
-          NOM DU Membre 4 :{''}
-        </FormInput>
-      </p>
-      <p>
-        <button type="submit">Ajouter Equipe</button>
-      </p>
+      {validated && <div className="error">Veuillez remplir tous les champs</div>}
+      {showNotif && <div className="success"> membre ajouté avec succès</div>}
     </form>
   );
 }
-function FormInput({ value, onChange, children }) {
+
+function FormInputText({ value, onChange, children }) {
   return (
     <label>
       {children} <input type="text" value={value} onChange={onChange} />
     </label>
   );
 }
-
-export default FormEquipe;
+export default FormeEquipe;
