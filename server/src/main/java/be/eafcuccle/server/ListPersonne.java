@@ -9,7 +9,7 @@ public class ListPersonne {
   private Collection<Personne> personnes = new ArrayList<>();
 
   public ListPersonne() {
-    addPersonne(new Personne("jeux", "Kewou Durand"));
+    addPersonne(new Personne("Projet de construction", "Kewou Durand"));
 
   }
 
