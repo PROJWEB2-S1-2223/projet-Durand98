@@ -6,9 +6,11 @@ import useSWR from 'swr';
 import { Alert, Spinner, Stack } from 'react-bootstrap';
 
 function FormeEquipe({ onSubmit }) {
-  const fetcher = (...args) => fetch(...args).then((res) => res.json());
+  const fetcher = (...args) => fetch(...args).then((res1) => res1.json());
+  const fetcher2 = (...args) => fetch(...args).then((res) => res.json());
   const [counts, setCounts] = useState({
     nomMembre: '',
+    nomProj: '',
   });
   const [selectedProj, setSelectedProj] = useState('');
   const [selecteMem, setSelecteMen] = useState('');
@@ -43,6 +45,7 @@ function FormeEquipe({ onSubmit }) {
         .then(() => {
           setCounts({
             nomMembre: '',
+            nomProj: '',
           });
           setFormDisabled(false);
           setShowNotif(true);
@@ -86,18 +89,44 @@ function FormeEquipe({ onSubmit }) {
     );
   }
 
+  function MembreOption() {
+    const { data, error } = useSWR('/api/personnes', fetcher2);
+
+    if (error) {
+      return <option value="">Une erreur s'est produite lors du chargement des projets</option>;
+    }
+
+    if (!data) {
+      return <option value="">Chargement du membre...</option>;
+    }
+
+    return (
+      <>
+        <option value="">--Choisir un membre--</option>
+        {data.map((men) => (
+          <option key={men.id} value={men.id}>
+            {men.nomPersonne}
+          </option>
+        ))}
+      </>
+    );
+  }
+
   return (
     <form onSubmit={handleFormSubmit} noValidate>
       <label htmlFor="projSelect">Choisir un projet:</label>
       <select id="projSelect" value={selectedProj} onChange={handleProjChange}>
         <ProjOptions />
       </select>{' '}
-      /{' '}
       <p>
         <FormInputText value={counts.nomMembre} onChange={handleNomMembreChange}>
           NOM DU MEMBRE:{''}
         </FormInputText>
       </p>
+      <label htmlFor="projSelec">Choisir un membre:</label>
+      <select id="projSelec" value={selecteMem} onChange={handleMenChange}>
+        <MembreOption />
+      </select>
       <p>
         <button type="submit" disabled={formDisabled}>
           Ajoute
