@@ -52,6 +52,7 @@ function ProjTabl() {
         <tr>
           <th>PROJET</th>
           <th>PERIODE</th>
+          <th>TACHES</th>
         </tr>
       </thead>
       <tbody>
@@ -59,6 +60,7 @@ function ProjTabl() {
           <tr key={projet.id}>
             <td>{projet.nomPro}</td>
             <td>{projet.periode}</td>
+            <td>{projet.tache}</td>
           </tr>
         ))}
       </tbody>

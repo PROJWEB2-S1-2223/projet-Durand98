@@ -69,6 +69,14 @@ function FormeAngenda({ onSubmit }) {
     }));
   }
 
+  function handleTacheChange(event) {
+    const newNomChef = event.target.value;
+    setCounts((prevCounts) => ({
+      ...prevCounts,
+      tache: newNomChef,
+    }));
+  }
+
   function ProjOptions() {
     const { data, error } = useSWR('/api/projets', fetcher);
 
@@ -97,6 +105,12 @@ function FormeAngenda({ onSubmit }) {
       <p>
         <FormInputText value={counts.nomPro} onChange={handleProMembreChange}>
           NOM DU PROJET:{''}
+        </FormInputText>
+      </p>
+
+      <p>
+        <FormInputText value={counts.tache} onChange={handleTacheChange}>
+          TACHE:{''}
         </FormInputText>
       </p>
       <label htmlFor="projSelect">Choisir un projet:</label>

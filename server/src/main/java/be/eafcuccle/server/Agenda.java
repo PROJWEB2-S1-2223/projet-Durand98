@@ -9,16 +9,21 @@ public class Agenda {
 
   private String periode;
   private String nomProj;
+  private String tache;
 
-  public Agenda(String nomProj, String periode) {
+  public Agenda(String nomProj, String periode, String tache) {
 
-    this.periode = periode;
     this.nomProj = nomProj;
+    this.periode = periode;
+    this.tache = tache;
 
   }
 
   public String getPeriode() {
     return periode;
+  }
+  public String getTache() {
+    return tache;
   }
 
   public String getNomPro() {
@@ -27,6 +32,10 @@ public class Agenda {
 
   public void setNomPro(String nomProj) {
     this.nomProj = nomProj;
+  }
+
+  public void setTache(String tache) {
+    this.tache = tache;
   }
 
   public void setPeriodee(String periode) {

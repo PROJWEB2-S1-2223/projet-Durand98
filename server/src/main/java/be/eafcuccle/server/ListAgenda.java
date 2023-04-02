@@ -9,7 +9,7 @@ public class ListAgenda {
   private Collection<Agenda> agendas = new ArrayList<>();
 
   public ListAgenda() {
-    addAgen(new Agenda("Contruction", "2023-07-04 au 2023-09-12"));
+    addAgen(new Agenda("Contruction", "2023-07-04 au 2023-09-12","Materiel"));
 
   }
 
