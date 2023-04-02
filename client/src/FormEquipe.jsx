@@ -1,8 +1,5 @@
-/* eslint-disable no-unused-vars */
-/* eslint-disable prettier/prettier */
 import React, { useState } from 'react';
 import useSWR from 'swr';
-
 import { Alert, Spinner, Stack } from 'react-bootstrap';
 
 function FormeEquipe({ onSubmit }) {
