@@ -31,7 +31,6 @@ function EquipeContent() {
       <Stack>
         <h2>Mes Equipes</h2>
         <ProjTabl />
-       
         <ListEquipe list={equi} onRemove={removeEqui} />
       </Stack>
     </>

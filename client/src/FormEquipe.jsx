@@ -1,16 +1,15 @@
 import React, { useState } from 'react';
 import useSWR from 'swr';
-import { Alert, Spinner, Stack } from 'react-bootstrap';
 
-function FormeEquipe({ onSubmit }) {
+function FormeEquipe({  }) {
   const fetcher = (...args) => fetch(...args).then((res1) => res1.json());
   const fetcher2 = (...args) => fetch(...args).then((res) => res.json());
   const [counts, setCounts] = useState({
     nomMembre: '',
     nomPro: '',
   });
-  const [selectedProj, setSelectedProj] = useState('');
-  const [selecteMem, setSelecteMen] = useState('');
+  const [selectedProj] = useState('');
+  const [selecteMem] = useState('');
 
   const [validated, setValidated] = useState(false);
   const [showNotif, setShowNotif] = useState(false);

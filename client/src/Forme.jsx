@@ -1,5 +1,3 @@
-/* eslint-disable no-unused-vars */
-/* eslint-disable prettier/prettier */
 import React, { useState } from 'react';
 
 function Forme({ onSubmit }) {
