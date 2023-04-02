@@ -10,7 +10,7 @@ function FormeEquipe({ onSubmit }) {
   const fetcher2 = (...args) => fetch(...args).then((res) => res.json());
   const [counts, setCounts] = useState({
     nomMembre: '',
-    nomProj: '',
+    nomPro: '',
   });
   const [selectedProj, setSelectedProj] = useState('');
   const [selecteMem, setSelecteMen] = useState('');
@@ -24,6 +24,14 @@ function FormeEquipe({ onSubmit }) {
     setCounts((prevCounts) => ({
       ...prevCounts,
       nomMembre: newNomChef,
+    }));
+  }
+
+  function handleProMembreChange(event) {
+    const newNomChef = event.target.value;
+    setCounts((prevCounts) => ({
+      ...prevCounts,
+      nomPro: newNomChef,
     }));
   }
 
@@ -45,7 +53,7 @@ function FormeEquipe({ onSubmit }) {
         .then(() => {
           setCounts({
             nomMembre: '',
-            nomProj: '',
+            nomPro: '',
           });
           setFormDisabled(false);
           setShowNotif(true);
@@ -59,11 +67,19 @@ function FormeEquipe({ onSubmit }) {
   }
 
   function handleProjChange(event) {
-    setSelectedProj(event.target.value);
+    const newNomChef = event.target.value;
+    setCounts((prevCounts) => ({
+      ...prevCounts,
+      nomPro: newNomChef,
+    }));
   }
 
   function handleMenChange(event) {
-    setSelecteMen(event.target.value);
+    const newNomChef = event.target.value;
+    setCounts((prevCounts) => ({
+      ...prevCounts,
+      nomMembre: newNomChef,
+    }));
   }
 
   function ProjOptions() {
@@ -81,7 +97,7 @@ function FormeEquipe({ onSubmit }) {
       <>
         <option value="">--Choisir un projet--</option>
         {data.map((projet) => (
-          <option key={projet.id} value={projet.id}>
+          <option key={projet.nomProj} value={projet.nomProj}>
             {projet.nomProj}
           </option>
         ))}
@@ -93,7 +109,7 @@ function FormeEquipe({ onSubmit }) {
     const { data, error } = useSWR('/api/personnes', fetcher2);
 
     if (error) {
-      return <option value="">Une erreur s'est produite lors du chargement des projets</option>;
+      return <option value="">Une erreur s'est produite lors du chargement des membres</option>;
     }
 
     if (!data) {
@@ -114,17 +130,22 @@ function FormeEquipe({ onSubmit }) {
 
   return (
     <form onSubmit={handleFormSubmit} noValidate>
+      <p>
+        <FormInputText value={counts.nomPro} onChange={handleProMembreChange}>
+          NOM DU PROJET:{''}
+        </FormInputText>
+      </p>
       <label htmlFor="projSelect">Choisir un projet:</label>
       <select id="projSelect" value={selectedProj} onChange={handleProjChange}>
         <ProjOptions />
       </select>{' '}
       <p>
         <FormInputText value={counts.nomMembre} onChange={handleNomMembreChange}>
-          NOM DU MEMBRE:{''}
+          NOM DU NOUVEAU MEMBRE:{''}
         </FormInputText>
       </p>
       <label htmlFor="projSelec">Choisir un membre:</label>
-      <select id="projSelec" value={selecteMem} onChange={handleMenChange}>
+      <select id="projSelect" value={selecteMem} onChange={handleMenChange}>
         <MembreOption />
       </select>
       <p>

@@ -31,6 +31,7 @@ function EquipeContent() {
       <Stack>
         <h2>Mes Equipes</h2>
         <ProjTabl />
+       
         <ListEquipe list={equi} onRemove={removeEqui} />
       </Stack>
     </>
@@ -52,18 +53,24 @@ function ProjTabl() {
     <table>
       <thead>
         <tr>
-          <th>CHEF PROJET</th>
+          <th>NOM MEMBRE</th>
+          <th>PROJET</th>
         </tr>
       </thead>
       <tbody>
         {data.map((projet) => (
           <tr key={projet.id}>
             <td>{projet.nomPersonne}</td>
+            <td>{projet.nomPro}</td>
+
           </tr>
         ))}
       </tbody>
     </table>
   );
 }
+
+
+
 
 export default EquipeContent;
