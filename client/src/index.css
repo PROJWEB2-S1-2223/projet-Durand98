@@ -30,7 +30,14 @@ body {
   place-items: center;
   min-width: 320px;
   min-height: 100vh;
+  background-image:url(https://cdn.prod.www.spiegel.de/images/c75dd789-0001-0004-0000-000000183245_w1600_r1.4982896237172179_fpx41.37_fpy50.jpg);
+  background-repeat:round;
+
 }
+
+
+
+
 
 h1 {
   font-size: 3.2em;
